@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>XMLHttpRequest</h2>
+
+<button type="button" onclick="loadXMLDoc()">Cambia</button>
+
+<p id="demo"></p>
+
+<script>
+   function loadXMLDoc() {
+       var req = new XMLHttpRequest();
+      req.open("DELETE", "test.txt");
+       req.onreadystatechange = function() {
+          if (this.readyState == 4) {
+               if (this.status == 200) {
+                  console.log(this.responseText);
+                  document.getElementById("demo").innerHTML = this.responseText;
+              } else {
+                   console.log("Error loading page\n");
+                   document.getElementById("demo").innerHTML = "Error loading page\n";
+                }
+            }
+       };
+       req.send();
+    }
+</script>
+
+</body>
+</html>

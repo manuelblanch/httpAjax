@@ -1,0 +1,32 @@
+<html>
+<head>
+<script>
+function ajax_post(){
+    
+    var hr = new XMLHttpRequest();
+    var url = "exemplepost.php";
+    var fn = document.getElementById("first").value;
+    var ln = document.getElementById("last").value;
+    var vars = "first="+fn+"&last="+ln;
+    hr.open("POST","http://localhost:8000/post.html", true);
+    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    hr.onreadystatechange = function() {
+	    if(hr.readyState == 4 && hr.status == 200) {
+		    var return_data = hr.responseText;
+			document.getElementById("status").innerHTML = return_data;
+	    }
+    }
+    
+    hr.send(vars);
+    document.getElementById("status").innerHTML = "espera...";
+}
+</script>
+</head>
+<body>
+<h2>Ajax Post</h2>
+First: <input id="first" name="first" type="text">  <br><br>
+Last: <input id="last" name="last" type="text"> <br><br>
+<input name="Btn" type="submit" value="Submit Data" onclick="ajax_post();"> <br><br>
+<div id="status"></div>
+</body>
+</html>

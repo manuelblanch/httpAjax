@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>XMLHttpRequest</h2>
+
+<button type="button" onclick="loadXMLDoc()">Cambia</button>
+
+<p id="demo"></p>
+
+<script>
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", "test.txt", false);
+  xmlhttp.send();
+  document.getElementById("demo").innerHTML =
+  xmlhttp.responseText;
+}
+</script>
+
+</body>
+</html>
